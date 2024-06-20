@@ -42,3 +42,11 @@ Takes a word and searches API for suggested ingredients
 ```bash
 POST recipes/suggestions
 ```
+
+### Usage
+Input your own keys into a .env file.
+```bash
+SPOONACULAR_KEY=
+SECRET_KEY=
+NODE_ENV=
+```

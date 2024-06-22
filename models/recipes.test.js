@@ -38,9 +38,4 @@ describe('Test recipe model functions', function(){
         let testresult = await Recipe.getRecipe(123196);
         expect(testresult).toEqual(testRecipe_data);
     })
-
-    // test('getIngredientsInDB func works', async function(){
-    //     let testresult = await Recipe.getIngredientsInDB();
-    //     expect(testresult).toBe(obj);
-    // })
 })

@@ -1,4 +1,5 @@
 const express = require('express')
+const db = require('../db')
 const User = require('./user')
 const {BadRequestError, UnauthorizedError} = require('../expressErrors')
 const {
@@ -15,8 +16,11 @@ afterAll(commonAfterAll);
 
 describe('Test user model functions', function(){
     test('register func works', async function(){
-        let testresult = await User.register('newUser', 'password3', 'test1', 'last1', 'email@email.com' );
+        let testresult = await User.register('testinguser', 'password3', 'test1', 'last1', 'test@email.com' );
         expect(testresult.code).toEqual(200);
+        
+        let newUser = await User.authenticateUser('testinguser', 'password3');
+        expect(newUser.username).toEqual('testinguser');
     })
 
     test('authenticateUser func works: CORRECT INFO', async function(){

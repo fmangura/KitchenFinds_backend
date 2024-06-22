@@ -14,9 +14,9 @@ const testRecipe_data2 = { 'id': 10697,
                             'allIngr': [ 'cornstarch', 'green onions' ]}
 
 async function commonBeforeAll() {
-    await db.query("DELETE FROM users");
-    await db.query("DELETE FROM recipes");
-  
+    await db.query("DELETE FROM users cascade");
+    await db.query("DELETE FROM recipes cascade");
+
     await db.query(`
           INSERT INTO users(username,
                             password,
@@ -48,10 +48,11 @@ async function commonBeforeEach() {
   
 async function commonAfterEach() {
 await db.query("ROLLBACK");
+
 }
   
 async function commonAfterAll() {
-await db.end();
+  await db.end();
 }
 
 module.exports = {
